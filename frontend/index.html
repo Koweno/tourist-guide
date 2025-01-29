@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Tourist Guide</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Ultimate Tourist Guide</h1>
+    </header>
+    
+    <main>
+        <section id="city-selection">
+            <h2>Select a City</h2>
+            <select id="city">
+                <option value="astana">Astana</option>
+                <option value="shymkent">Shymkent</option>
+                <option value="almaty">Almaty</option>
+            </select>
+        </section>
+        
+        <section id="date-selection">
+            <h2>Select Travel Dates</h2>
+            <label for="start-date">From:</label>
+            <input type="date" id="start-date">
+            <label for="end-date">To:</label>
+            <input type="date" id="end-date">
+        </section>
+        
+        <section id="places-selection">
+            <h2>Select Attractions</h2>
+            <div id="places-list">
+                <!-- Places will be dynamically added here -->
+            </div>
+        </section>
+        
+        <section id="hotels-selection">
+            <h2>Nearby Hotels</h2>
+            <div id="hotels-list">
+                <!-- Found hotels will be displayed here -->
+            </div>
+        </section>
+        
+        <section id="cart">
+            <h2>Your Trip</h2>
+            <div id="cart-details">
+                <!-- The dynamically filled cart -->
+            </div>
+            <button id="save-trip">Save Trip</button>
+            <button id="share-trip">Share</button>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Ultimate Tourist Guide</p>
+    </footer>
+</body>
+</html>
