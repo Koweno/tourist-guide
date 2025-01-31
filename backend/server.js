@@ -6,15 +6,22 @@ const Joi = require('joi');
 // Создаем экземпляр приложения Express
 const app = express();
 app.use(express.json()); // Для парсинга JSON в теле запроса
+const path = require('path'); // Добавьте эту строку для подключения модуля path
 
 // Подключаемся к базе данных MongoDB (обратите внимание на свой URI)
-mongoose.connect(' mongodb://127.0.0.1:27017/tourist-guide', { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('Connected to MongoDB...'))
-    .catch(err => console.error('Could not connect to MongoDB...', err));
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost:27017/tourist-guide', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+.then(() => console.log('Connected to MongoDB'))
+.catch(err => console.log('Error connecting to MongoDB:', err));
+
 
 // Схема пользователя для MongoDB
 const userSchema = new mongoose.Schema({
-    username: { type: String, required: true, unique: true },
+    username: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true }
 });
@@ -31,6 +38,17 @@ const validateUser = (user) => {
     });
     return schema.validate(user);
 };
+
+const newUser = new User({
+    username: 'JohnDoe',
+    email: 'johndoe@example.com',
+    password: 'password123'
+});
+
+newUser.save()
+    .then(() => console.log('User saved'))
+    .catch(err => console.log('Error saving user:', err));
+
 
 // Обработчик POST запроса на /api/register
 app.post('/api/register', async (req, res) => {
