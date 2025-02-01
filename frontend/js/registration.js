@@ -1,42 +1,68 @@
-// Обработчик отправки формы регистрации
-document.getElementById('registration-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    // Получаем данные из формы
-    const username = document.getElementById('username').value;
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-
-    // Данные, которые будем отправлять на сервер
-    const userData = {
-        username: username,
-        email: email,
-        password: password
-    };
-
-    // Отправка данных на сервер (здесь указываем API серверного маршрута)
-    fetch('/api/register', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(userData)
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            console.log('User successfully registered!');
-            // Можно показать сообщение пользователю или перенаправить его на другую страницу
-        } else {
-            console.log('Error during registration:', data.message);
-            // Показать ошибку пользователю
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        // Показать ошибку в случае проблем с сервером
+// js/registration.js
+document.addEventListener("DOMContentLoaded", function() {
+    const modal = document.getElementById("registrationModal");
+    const registerBtn = document.getElementById("registerBtn");
+    const closeBtn = document.querySelector("#registrationModal .close");
+    const registrationForm = document.getElementById("registration-form");
+    
+    // Флаг регистрации (в реальном проекте можно использовать localStorage или сессию)
+    let isRegistered = false;
+    
+    // Функция открытия модального окна
+    function openModal() {
+      modal.style.display = "block";
+    }
+    
+    // Функция закрытия модального окна
+    function closeModal() {
+      modal.style.display = "none";
+    }
+    
+    // Если пользователь не зарегистрирован, открываем модальное окно автоматически
+    if (!isRegistered) {
+      openModal();
+    }
+    
+    // Обработчик клика по кнопке регистрации в шапке
+    registerBtn.addEventListener("click", function() {
+      if (!isRegistered) {
+        openModal();
+      } else {
+        alert("Вы уже зарегистрированы!");
+      }
     });
-
-    // Очистка формы после отправки
-    event.target.reset();
-});
+    
+    // Закрытие модального окна по клику на крестик, только если пользователь зарегистрирован
+    closeBtn.addEventListener("click", function() {
+      if (!isRegistered) {
+        alert("Пожалуйста, зарегистрируйтесь, чтобы продолжить.");
+      } else {
+        closeModal();
+      }
+    });
+    
+    // Закрытие окна при клике вне его содержимого, если пользователь уже зарегистрирован
+    window.addEventListener("click", function(event) {
+      if (event.target === modal && isRegistered) {
+        closeModal();
+      }
+    });
+    
+    // Обработка отправки формы регистрации
+    registrationForm.addEventListener("submit", function(event) {
+      event.preventDefault();
+      const username = registrationForm.username.value;
+      const email = registrationForm.email.value;
+      const password = registrationForm.password.value;
+      
+      // Здесь можно выполнить AJAX‑запрос на сервер для регистрации (например, через Server.registerUser)
+      console.log("Регистрация:", { username, email, password });
+      
+      // Имитация успешной регистрации
+      isRegistered = true;
+      alert("Регистрация прошла успешно!");
+      registrationForm.reset();
+      closeModal();
+    });
+  });
+  

@@ -1,60 +1,106 @@
+/* Общие стили */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #f468ba, #47c9e7);
+  }
+  
+  header, footer {
+    background-color: #333;
     color: #fff;
-}
-
-header {
+    padding: 1rem;
     text-align: center;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.5);
-}
-
-h1, h2 {
-    margin: 0;
-}
-
-main {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(34, 125, 182, 0.3);
-}
-
-section {
-    margin-bottom: 20px;
-    padding: 15px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
-}
-
-select {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    background: rgba(255, 255, 255, 0.8);
-    color: #333;
-}
-
-.place {
-    margin-bottom: 10px;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 5px;
-}
-
-footer {
-    text-align: center;
-    padding: 15px;
-    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  main {
+    padding: 1rem;
+  }
+  
+  section {
+    margin-bottom: 2rem;
+  }
+  
+  /* Стили для элементов списка мест и отелей */
+  .place-item, .hotel-item {
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border-radius: 4px;
+  }
+  
+  .place-item:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .place-item.selected {
+    background-color: #d0eaff;
+  }
+  
+  /* Стили для модального окна регистрации */
+  .modal {
+    display: none; /* Скрыто по умолчанию */
     position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
     width: 100%;
-    bottom: 0;
-}
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 1rem;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 4px;
+    position: relative;
+  }
+  
+  .modal-content .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+  }
+  
+  .modal-content .close:hover,
+  .modal-content .close:focus {
+    color: #000;
+    text-decoration: none;
+  }
+  
+  form label {
+    display: block;
+    margin-top: 10px;
+  }
+  
+  form input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box;
+  }
+  
+  form button {
+    margin-top: 15px;
+    padding: 10px;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  form button:hover {
+    background-color: #555;
+  }
+  
