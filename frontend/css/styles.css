@@ -103,4 +103,70 @@ body {
   form button:hover {
     background-color: #555;
   }
-  
+  /* Дополнительные стили */
+
+/* Улучшенный стиль для кнопки регистрации */
+#registerBtn {
+  background-color: #ff6600;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+#registerBtn:hover {
+  background-color: #cc5500;
+}
+
+/* Стили для выпадающего списка выбора города */
+#city-selection select {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* Стили для списка мест */
+#places-list, #hotels-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.place-item, .hotel-item {
+  flex: 1 1 calc(33.333% - 10px);
+  background-color: #f8f8f8;
+  text-align: center;
+  padding: 10px;
+  transition: transform 0.2s ease;
+}
+
+.place-item:hover, .hotel-item:hover {
+  transform: scale(1.05);
+}
+
+/* Модальное окно - центрирование */
+#registrationModal {
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+  #places-list, #hotels-list {
+      flex-direction: column;
+  }
+
+  .place-item, .hotel-item {
+      flex: 1 1 100%;
+  }
+
+  .modal-content {
+      width: 90%;
+  }
+}
